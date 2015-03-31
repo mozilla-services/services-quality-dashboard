@@ -1,1 +1,7 @@
-Check out http://shopify.github.com/dashing for more information.
+#Installation
+
+bundle install
+
+dashing start
+
+Visit localhost:3030 to view
