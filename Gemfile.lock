@@ -20,6 +20,8 @@ GEM
       sprockets (~> 2.10.1)
       thin (~> 1.6.1)
       thor (~> 0.18.1)
+    dogapi (1.17.0)
+      multi_json
     equalizer (0.0.10)
     eventmachine (1.0.7)
     execjs (2.0.2)
@@ -91,5 +93,6 @@ PLATFORMS
 
 DEPENDENCIES
   dashing
+  dogapi
   rest-client
   twitter

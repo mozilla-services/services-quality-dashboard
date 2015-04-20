@@ -1,11 +1,23 @@
 <div class="gridster">
   <ul>
+    <!-- Some ideas to make this more useful, mostly high level green/red states -->
+    <!-- Query build status from jenkins: dog.get_monitor(91879) (monitor for that jenkins build) -->
+    <!-- Check each app status from datadog: dog.service_check('app.is_ok', 'app1', 0, :message => 'Response: 200 OK') -->
+
     <!-- <li data-row="1" data-col="1" data-sizex="1" data-sizey="1"> -->
       <a href="/quality">Overall</a>
     <!-- </li> -->
     <br />
+
     <!-- <li data-row="2" data-col="1" data-sizex="1" data-sizey="1"> -->
       <a href="/reading_list">Reading List</a>
     <!-- </li> -->
+    <br />
+
+    <!-- <li data-row="2" data-col="1" data-sizex="1" data-sizey="1"> -->
+      <a href="/loop">Loop</a>
+    <!-- </li> -->
+    <br />
+
   </ul>
 </div>
