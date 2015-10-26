@@ -17,4 +17,4 @@ If you're running docker directly on your host linux then you should see the das
 $ echo $DOCKER_HOST
 tcp://192.168.99.100:2376
 
-you would point your browser to http://192.168.99.100 or similar
+you would point your browser to http://192.168.99.100 or similar.
