@@ -1,12 +1,12 @@
 # Build it yourself
-
+## Using Ruby/Dashing directly
 ```
 bundle install
 dashing start
 ```
 Visit localhost:3030 to view
 
-# Using Docker
+## Using Dockerfile
 
 Build the image and run it:
 ```
@@ -19,3 +19,9 @@ $ echo $DOCKER_HOST
 tcp://192.168.99.100:2376
 ```
 you would point your browser to http://192.168.99.100 or similar.
+
+# Pull the latest 'gold' docker image
+```
+$ docker run -t -i -d -P -p 80:80 mozservicesqa/dashboard
+```
+This 'gold' docker image is also auto-deployed to http://dashboard.stage.mozaws.net
