@@ -10,13 +10,15 @@ SCHEDULER.every '60m', :first_in => 0 do |job|
   response = RestClient.get(url)
   buglist = JSON.parse(response)
   diffs = []
-  for bug in buglist["bugs"]
-    resolved_time = DateTime.parse(bug["cf_last_resolved"])
-    created_time = DateTime.parse(bug["creation_time"])
-    if resolved_time > created_time
-      diff = (resolved_time - created_time).to_f
-      if diff < 21 #exclude outliers
-        diffs << diff
+  if buglist["bugs"]
+    for bug in buglist["bugs"]
+      resolved_time = DateTime.parse(bug["cf_last_resolved"])
+      created_time = DateTime.parse(bug["creation_time"])
+      if resolved_time > created_time
+        diff = (resolved_time - created_time).to_f
+        if diff < 21 #exclude outliers
+          diffs << diff
+        end
       end
     end
   end
