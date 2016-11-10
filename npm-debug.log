@@ -1,0 +1,21 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node',
+1 verbose cli   '/Users/stuartphilp/.nvm/v0.10.35/bin/npm',
+1 verbose cli   'run',
+1 verbose cli   'dashboard-ubuntu' ]
+2 info using npm@3.8.7
+3 info using node@v0.10.35
+4 verbose stack Error: ENOENT, open '/Users/stuartphilp/Documents/git/services-quality-dashboard/package.json'
+5 verbose cwd /Users/stuartphilp/Documents/git/services-quality-dashboard
+6 error Darwin 16.0.0
+7 error argv "node" "/Users/stuartphilp/.nvm/v0.10.35/bin/npm" "run" "dashboard-ubuntu"
+8 error node v0.10.35
+9 error npm  v3.8.7
+10 error path /Users/stuartphilp/Documents/git/services-quality-dashboard/package.json
+11 error code ENOENT
+12 error errno 34
+13 error enoent ENOENT, open '/Users/stuartphilp/Documents/git/services-quality-dashboard/package.json'
+14 error enoent ENOENT, open '/Users/stuartphilp/Documents/git/services-quality-dashboard/package.json'
+14 error enoent This is most likely not a problem with npm itself
+14 error enoent and is related to npm not being able to find a file.
+15 verbose exit [ 34, true ]
