@@ -43,10 +43,13 @@ GEM
     memoizable (0.4.2)
       thread_safe (~> 0.3, >= 0.3.1)
     mime-types (2.99)
+    mini_portile2 (2.0.0)
     multi_json (1.11.2)
     multipart-post (2.0.0)
     naught (1.1.0)
     netrc (0.11.0)
+    nokogiri (1.6.7.2)
+      mini_portile2 (~> 2.0.0.rc2)
     rack (1.5.5)
     rack-protection (1.5.3)
       rack
@@ -106,6 +109,7 @@ PLATFORMS
 DEPENDENCIES
   dashing
   dogapi
+  nokogiri
   rest-client
   twitter
 
