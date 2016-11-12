@@ -2,7 +2,7 @@ require 'rest-client'
 require 'json'
 require 'date'
 require 'open-uri'
-require 'Nokogiri'
+require 'nokogiri'
 require 'pp'
 
 require_relative '../assets/testrail'

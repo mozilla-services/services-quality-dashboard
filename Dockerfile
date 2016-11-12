@@ -12,11 +12,17 @@ RUN \
   apt-get update && \
   apt-get -y upgrade && \
   apt-get install -y build-essential && \
-  apt-get install -y software-properties-common
+  apt-get install -y ruby2.0 && \
+  apt-get install -y ruby2.0-dev && \
+  apt-get install -y git nodejs-legacy npm && \
+  apt-get install -y software-properties-common curl
 
-# Install project specific dependencies
+# Force Ruby 2.0 to default
+RUN ln -fs /usr/bin/ruby2.0 /usr/bin/ruby
+RUN ln -fs /usr/bin/gem2.0 /usr/bin/gem
+
+# Install Ruby Gems
 RUN \
-  apt-get install -y ruby ruby-dev git nodejs-legacy npm && \
   gem install dashing --no-ri --no-rdoc && \
   gem install god --no-ri --no-rdoc && \
   gem install bundler --no-ri --no-rdoc
