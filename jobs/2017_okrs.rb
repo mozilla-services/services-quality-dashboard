@@ -6,13 +6,12 @@ require 'nokogiri'
 require 'pp'
 
 require_relative '../assets/testrail'
+require_relative '../assets/jenkins'
 
 SCHEDULER.every '60m', :first_in => 0 do |job|
 
   project_list_source = open("https://wiki.mozilla.org/TestEngineering#Full_Project_List").read()
-
   capture_html = Nokogiri::HTML(project_list_source)
-
   rows = capture_html.xpath("//table/tr")
 
   details = rows.collect do |row|
@@ -38,6 +37,8 @@ SCHEDULER.every '60m', :first_in => 0 do |job|
     detail
   end
 
+  total_projects_count = details.count
+
   test_suites_complete = 0
   unit_tests_complete = 0
   functional_tests_complete = 0
@@ -46,6 +47,7 @@ SCHEDULER.every '60m', :first_in => 0 do |job|
   accessibility_tests_complete = 0
   security_tests_complete = 0
   localization_tests_complete = 0
+  tests_in_project_repo_count = 0
 
   grouped_by_test_suite = details.group_by {|item| item[:test_suite]}
   if grouped_by_test_suite.any? {|k,v| k.include? "lightgreen"} then
@@ -100,6 +102,40 @@ SCHEDULER.every '60m', :first_in => 0 do |job|
     performance_tests_complete + accessibility_tests_complete + security_tests_complete + localization_tests_complete
   total_automation_complete_pct = (total_automation_complete.to_f / total_automation_possibilities.to_f * 100).round(2)
 
+  team_members = 14 # as of 1/12/2016
+  team_members_diverse = 4 # as of 1/12/2016
+  team_diversity_pct = ((team_members_diverse.to_f / team_members.to_f) * 100).round(0)
+  team_inclusion_score = 3 # per 2016 engagement survey
+
+
+  # project_dashboard_list = open("http://localhost:3030/overview").read()
+  project_dashboard_list = open("http://dashboard.stage.mozaws.net/overview").read()
+  projects = Nokogiri::HTML(project_dashboard_list).css("a.project_stats")
+  project_dashboards_complete = projects.count
+  dashboards_complete_pct = ((project_dashboards_complete.to_f / total_projects_count.to_f) * 100).round
+
+  jenkins_api_helpers = Jenkins::Helpers.new()
+  job_list = jenkins_api_helpers.get_all_jobs()
+  job_list["jobs"].each do |key, value|
+    job_git_url_json = jenkins_api_helpers.get_project_github_url(key["name"])
+    if job_git_url_json.has_key?("scm")
+      job_git_url_json["scm"].each do |key, value|
+        if key == "userRemoteConfigs"
+          github_url = value[0]["url"]
+          if jenkins_api_helpers.is_github_url_dev_repo(github_url)
+            tests_in_project_repo_count += 1
+          end
+        end
+      end
+    end
+  end
+  tests_in_project_repo_pct = ((tests_in_project_repo_count.to_f / job_list["jobs"].count.to_f) * 100).round(2)
+
   send_event('2017_okr_test_suites_complete', { value: test_suites_complete_pct})
   send_event('2017_okr_test_automation_complete', { value: total_automation_complete_pct})
+  send_event('2017_okr_dashboards_complete', { value: dashboards_complete_pct})
+  send_event('2017_okr_in_PRs', { value: tests_in_project_repo_pct})
+  send_event('2017_okr_diversity', { value: team_diversity_pct})
+  send_event('2017_okr_inclusion', { current: team_inclusion_score, last: 0 })
+
 end

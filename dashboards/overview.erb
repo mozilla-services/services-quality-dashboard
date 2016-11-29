@@ -1,29 +1,36 @@
-<div class="gridster">
+<div class="gridster" style="margin: 40px;">
   <ul>
     <!-- Some ideas to make this more useful, mostly high level green/red states -->
     <!-- Query build status from jenkins: dog.get_monitor(91879) (monitor for that jenkins build) -->
     <!-- Check each app status from datadog: dog.service_check('app.is_ok', 'app1', 0, :message => 'Response: 200 OK') -->
-
-      <a id="overall" href="/2017_okrs">2017 OKRs</a>
+    <div>
+      Topline
+      <br />
+      <a id="overall" class="topline" href="/2017_okrs" style="color:purple;">2017 OKRs</a>
+      |
+      <a id="testrail_aggregate" class="topline" href="/testrail_aggregate" style="color:purple;">Testrail Aggregate Stats</a>
+    </div>
+    <br />
     <br />
 
-      <a id="testrail" href="/testrail_aggregate">Testrail Aggregate Stats</a>
+    <div>
+      Browsers
+      <br />
+      <a class="project_stats" href="/testrail_firefox_desktop" style="color:purple;">Firefox Desktop</a>
+      |
+      <a class="project_stats" href="/testrail_firefox_for_android" style="color:purple;">Firefox for Android</a>
+      |
+      <a class="project_stats" href="/testrail_firefox_for_ios" style="color:purple;">Firefox for iOS</a>
+    </div>
     <br />
-
-      <a id="testrail" href="/testrail_firefox_desktop">Firefox Desktop</a>
     <br />
-
-      <a id="testrail" href="/testrail_firefox_for_android">Firefox for Android</a>
-    <br />
-
-      <a id="testrail" href="/testrail_firefox_for_ios">Firefox for iOS</a>
-    <br />
-
-      <a id="testrail" href="/testrail_addons">Addons</a>
-    <br />
-
-      <a id="testrail" href="/testrail_telemetry">Telemetry</a>
-    <br />
+    <div>
+      Sites/Services
+      <br />
+      <a class="project_stats" href="/testrail_addons" style="color:purple;">Addons</a>
+      |
+      <a class="project_stats" href="/testrail_telemetry" style="color:purple;">Telemetry</a>
+    </div>
 
   </ul>
 </div>
