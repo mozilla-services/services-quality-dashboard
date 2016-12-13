@@ -16,14 +16,14 @@ module Jenkins
 	class Helpers
 
 		@jenkins_url = nil
-		@test_repos = nil
+		@test_repo_black_list = nil # jenkins jobs that run out of non-project repos
 
 		def initialize(jenkins_url="")
 			if jenkins_url.empty?
 				jenkins_url = "https://fx-test-jenkins-dev.stage.mozaws.net:8443/"
 			end
 			@jenkins_url = jenkins_url
-			@test_repos = [
+			@test_repo_black_list = [
 				"https://github.com/mozilla-services/services-test/",
 				"https://github.com/rpappalax/jenkins-job-manager/"
 			]
@@ -44,7 +44,7 @@ module Jenkins
 		end
 
 		def is_github_url_dev_repo(github_url)
-			if @test_repos.include? github_url
+			if @test_repo_black_list.include? github_url
 				return false
 			end
 			return true
