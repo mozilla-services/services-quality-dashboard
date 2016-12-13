@@ -108,8 +108,8 @@ SCHEDULER.every '60m', :first_in => 0 do |job|
   team_inclusion_score = 3 # per 2016 engagement survey (mock)
 
 
-  project_dashboard_list = open("http://localhost:3030/overview").read()
-  # project_dashboard_list = open("http://dashboard.stage.mozaws.net/overview").read()
+  # project_dashboard_list = open("http://localhost:3030/overview").read()
+  project_dashboard_list = open("http://dashboard.stage.mozaws.net/overview").read()
   projects = Nokogiri::HTML(project_dashboard_list).css("a.project_stats")
   project_dashboards_complete = projects.count
   dashboards_complete_pct = ((project_dashboards_complete.to_f / total_projects_count.to_f) * 100).round
