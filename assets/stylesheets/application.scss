@@ -255,3 +255,19 @@ h3 {
 .clearfix:after { clear: both; }
 .clearfix { zoom: 1; }
 
+
+
+// ----------------------------------------------------------------------------
+// Custom Styles
+// ----------------------------------------------------------------------------
+.footer-links {
+  width: 100%;
+  margin: 0 auto;
+  margin: 40px;
+  font-size: 0.75em;
+  text-align: center;
+}
+
+.footer-links a {
+  color: lightblue;
+}
