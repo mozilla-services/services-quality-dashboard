@@ -14,7 +14,7 @@ footerLinks = '''
   |
   <a href="https://mozilla.github.io/fxtest-dashboard/">Issues Dashboard</a>
   |
-  <a href="servicebook.dev.mozaws.net">Servicebook</a>
+  <a href="https://servicebook.dev.mozaws.net">Servicebook</a>
 '''
 
 console.log("Yeah! The dashboard has started!")

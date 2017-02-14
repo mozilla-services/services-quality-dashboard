@@ -4,17 +4,18 @@
   <div>Tracking for WebDriver Spec Compliance in Marionette - <a href="https://developer.mozilla.org/en-US/docs/Mozilla/QA/Marionette/WebDriver/status" style="color:lightblue;">Details</a></div>
   <ul>
 
-   <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
-      <div data-id="webdriver_total_issues" data-view="Number" data-title="Total issues" data-moreinfo="Count of blockers on bug 721859" data-prefix=""></div>
+    <li data-row="1" data-col="1" data-sizex="1" data-sizey="1" onclick="window.open('https://bugzilla.mozilla.org/showdependencytree.cgi?id=721859&hide_resolved=0')">
+      <div data-id="webdriver_total_issues" data-view="Number" data-title="Total Issues" data-moreinfo="Immediate Blockers Only - Click to View Tree" data-prefix=""></div>
     </li>
 
-    <li data-row="1" data-col="2" data-sizex="1" data-sizey="1">
-      <div data-id="webdriver_bugs_open" data-view="Number" data-title="Remaining Issues"></div>
+    <li data-row="1" data-col="2" data-sizex="1" data-sizey="1" onclick="window.open('https://bugzilla.mozilla.org/showdependencytree.cgi?id=721859&hide_resolved=1')">
+      <div data-id="webdriver_bugs_open" data-view="Number" data-title="Remaining Issues" data-moreinfo="Immediate Blockers Only - Click to View Tree"></div>
     </li>
 
     <li data-row="1" data-col="3" data-sizex="1" data-sizey="1">
-      <div data-id="webdriver_pct_resolved" data-view="Meter" data-title="Percent of issues complete" data-moreinfo="Resolved / Total" data-prefix="" data-suffix="%" data-min="0" data-max="100"></div>
+      <div data-id="webdriver_pct_resolved" data-view="Meter" data-title="Percent of Issues Complete" data-moreinfo="Resolved / Total" data-prefix="" data-suffix="%" data-min="0" data-max="100"></div>
     </li>
+
   </ul>
 </div>
 
