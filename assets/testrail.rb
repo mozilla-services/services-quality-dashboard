@@ -208,7 +208,7 @@ module TestRail
 			end
 
 
-			return [total_cases_count,untriaged_cases,suitable_cases,unsuitable_cases,completed_cases]
+			return [total_cases_count, untriaged_cases, suitable_cases, unsuitable_cases, completed_cases]
 
 		end
 

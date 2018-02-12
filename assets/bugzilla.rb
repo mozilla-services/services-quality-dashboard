@@ -21,13 +21,6 @@ module BugZilla
       @client = client
     end
 
-    # when you need bugs for a specific user
-    def get_bugs_for_reporter(email)
-      bug = @client.send_get('?assigned_to=%s' % email)
-      total_bugs = bug.size
-      return total_bugs
-    end
-
 
     # when you need bugs stats for blocked bugs in a certain state
     # /rest/bug?blocks=11455741&status=NEW
