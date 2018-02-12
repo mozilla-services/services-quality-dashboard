@@ -182,6 +182,36 @@ module TestRail
 		  return [total_cases_count, possible_automation_pct, automation_coverage_pct]
 		end
 
+
+
+		def get_suite_stats(suite_id)
+			suite = @client.send_get('get_suite/%s' % suite_id)
+			test_cases = @client.send_get("get_cases/#{suite['project_id']}&suite_id=#{suite_id}")
+
+			total_cases_count = test_cases.size
+			untriaged_cases = 0
+			suitable_cases = 0
+			unsuitable_cases = 0
+			completed_cases = 0
+
+			for case_ in test_cases
+				case case_['custom_automation_status']
+					when 1
+						untriaged_cases+=1
+					when 2
+						suitable_cases+=1
+					when 3
+						unsuitable_cases+=1
+					when 4
+						completed_cases+=1
+				end
+			end
+
+
+			return [total_cases_count,untriaged_cases,suitable_cases,unsuitable_cases,completed_cases]
+
+		end
+
 	end
 
 	class APIClient
